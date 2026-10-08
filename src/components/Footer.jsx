@@ -9,14 +9,12 @@ const HELP_LINKS = [
 ]
 
 const SERVICE_LINKS = [
-  { page: 'services', label: 'Web Development' },
-  { page: 'services', label: 'Digital Marketing' },
-  { page: 'services', label: 'Business Solutions' },
-  { page: 'services', label: 'UI / UX Design' },
+  { page: 'services', label: 'DBA Services' },
+  { page: 'services', label: 'Application Support' },
+  { page: 'services', label: 'DevOps' },
+  { page: 'services', label: 'Managed IT Services' },
+  { page: 'services', label: 'Training & Placement' },
 ]
-
-const LANGUAGES = ['English', 'Hindi', 'Marathi']
-const CURRENCIES = ['USD', 'INR', 'EUR']
 
 const SOCIALS = [
   {
@@ -53,8 +51,6 @@ const SOCIALS = [
 
 export default function Footer({ onNavigate = () => {} }) {
   const [email, setEmail] = useState('')
-  const [lang, setLang] = useState('English')
-  const [currency, setCurrency] = useState('USD')
 
   const go = (page) => {
     onNavigate(page)
@@ -86,7 +82,7 @@ export default function Footer({ onNavigate = () => {} }) {
                 </span>
                 <span>
                   <span className="ft-label">Call us directly?</span>
-                  <a className="ft-value" href="tel:+919012345800">(+91) 901-1234-800</a>
+                  <a className="ft-value" href="tel:+919890073789">(+91) 98900-73789</a>
                 </span>
               </li>
               <li>
@@ -95,7 +91,7 @@ export default function Footer({ onNavigate = () => {} }) {
                 </span>
                 <span>
                   <span className="ft-label">Address</span>
-                  <span className="ft-value">Mumbai</span>
+                  <a className="ft-value" href="https://www.google.com/maps/search/502,+4th+Floor,+Dangat+Patil+Empire,+Kudale+Baug,+Vadgaon+Budruk,+Pune,+Maharashtra+411041/@18.4603799,73.8211911,17z/data=!3m1!4b1?authuser=0&entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Pune</a>
                 </span>
               </li>
               <li>
@@ -159,25 +155,6 @@ export default function Footer({ onNavigate = () => {} }) {
           </nav>
 
           <p className="ft-copy">&copy; {new Date().getFullYear()} MayaraTech. All rights reserved.</p>
-
-          <div className="ft-prefs">
-            <select
-              className="ft-select"
-              aria-label="Language"
-              value={lang}
-              onChange={(e) => setLang(e.target.value)}
-            >
-              {LANGUAGES.map((l) => <option key={l}>{l}</option>)}
-            </select>
-            <select
-              className="ft-select"
-              aria-label="Currency"
-              value={currency}
-              onChange={(e) => setCurrency(e.target.value)}
-            >
-              {CURRENCIES.map((c) => <option key={c}>{c}</option>)}
-            </select>
-          </div>
 
           <button
             className="ft-top"

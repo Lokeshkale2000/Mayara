@@ -3,10 +3,10 @@ import logo from '../assets/icon-192.webp'
 
 const LINKS = [
   { page: 'home', label: 'Home' },
+  { page: 'courses', label: 'Courses' },
   { page: 'about', label: 'About Us' },
   { page: 'services', label: 'Services' },
   { page: 'gallery', label: 'Gallery' },
-  { page: 'blog', label: 'Blog' },
   { page: 'faq', label: 'FAQs' },
   { page: 'contact', label: 'Contact' },
 ]

@@ -7,10 +7,12 @@ import Services from './pages/Services'
 import Gallery from './pages/Gallery'
 import Blog from './pages/Blog'
 import FAQ from './pages/FAQ'
+import Courses from './pages/Courses'
 import Contact from './pages/Contact'
 import './index.css'
 
 const PAGES = {
+  courses: Courses,
   home: Home,
   about: About,
   services: Services,
@@ -23,6 +25,7 @@ const PAGES = {
 // Map URL path → page key
 function pathToPage(path) {
   const map = {
+    '/courses': 'courses',
     '/': 'home',
     '/about': 'about',
     '/services': 'services',

@@ -66,7 +66,7 @@
 /* ── Contact column ── */
 .ft-contact li {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1.1em;
 }
 .ft-contact li + li { margin-top: 1.4em; }
@@ -77,6 +77,7 @@
   place-items: center;
   width: 4.4rem;
   height: 4.4rem;
+  margin-top: 0.2rem;
   color: var(--ft-blue);
   background: #fff;
   border-radius: 50%;
