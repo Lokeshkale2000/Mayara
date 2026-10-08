@@ -111,6 +111,8 @@ export default function Courses({ onNavigate = () => {} }) {
             <select value={sort} onChange={(e) => setSort(e.target.value)} aria-label="Sort courses">
               <option value="new">Newly published</option>
               <option value="az">Title A–Z</option>
+
+              
             </select>
           </div>
 
