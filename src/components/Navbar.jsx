@@ -6,7 +6,6 @@ const LINKS = [
   { page: 'courses', label: 'Courses' },
   { page: 'about', label: 'About Us' },
   { page: 'services', label: 'Services' },
-  { page: 'gallery', label: 'Gallery' },
   { page: 'faq', label: 'FAQs' },
   { page: 'contact', label: 'Contact' },
 ]
@@ -66,13 +65,6 @@ export default function Navbar({ currentPage, onNavigate, cartCount = 0 }) {
           <button className="nb-icon-btn" aria-label="Search">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
           </button>
-
-          <button className="nb-icon-btn" aria-label="Cart">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h3l2.7 12.4a1 1 0 0 0 1 .8h8.7a1 1 0 0 0 1-.8L20 7H6" /><circle cx="9.5" cy="20" r="1.2" /><circle cx="17" cy="20" r="1.2" /></svg>
-            {cartCount > 0 && <span className="nb-badge">{cartCount}</span>}
-          </button>
-
-          <button className="nb-login" onClick={() => alert('Login')}>Login</button>
 
           <button className="nb-toggle" aria-label="Toggle menu" onClick={() => setOpen(!open)}>
             {open

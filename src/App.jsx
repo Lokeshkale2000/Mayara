@@ -4,7 +4,6 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
-import Gallery from './pages/Gallery'
 import Blog from './pages/Blog'
 import FAQ from './pages/FAQ'
 import Courses from './pages/Courses'
@@ -16,7 +15,6 @@ const PAGES = {
   home: Home,
   about: About,
   services: Services,
-  gallery: Gallery,
   blog: Blog,
   faq: FAQ,
   contact: Contact,
@@ -29,7 +27,6 @@ function pathToPage(path) {
     '/': 'home',
     '/about': 'about',
     '/services': 'services',
-    '/gallery': 'gallery',
     '/blog': 'blog',
     '/faq': 'faq',
     '/contact': 'contact',

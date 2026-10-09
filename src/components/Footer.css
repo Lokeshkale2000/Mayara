@@ -59,8 +59,18 @@
   border: 0;
   cursor: pointer;
   text-align: left;
-  transition: color 0.15s;
+  position: relative;
+  transition: color 0.2s;
 }
+.ft-link::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 0; height: 1.5px;
+  background: var(--ft-blue);
+  transition: width 0.25s ease;
+}
+.ft-link:hover::after { width: 100%; }
 .ft-link:hover { color: var(--ft-blue); }
 
 /* ── Contact column ── */
@@ -111,12 +121,13 @@
   color: var(--ft-ink);
   text-decoration: none;
   border-bottom: 1px solid var(--ft-line);
-  transition: color 0.15s;
+  transition: color 0.2s, transform 0.2s;
 }
 .ft-socials li:first-child .ft-social { padding-top: 0; }
 .ft-socials li:last-child .ft-social { border-bottom: 0; }
-.ft-social:hover { color: var(--ft-blue); }
-.ft-social svg { flex: none; width: 2.2rem; height: 2.2rem; }
+.ft-social:hover { color: var(--ft-blue); transform: translateX(4px); }
+.ft-social svg { flex: none; width: 2.2rem; height: 2.2rem; transition: transform 0.2s; }
+.ft-social:hover svg { transform: scale(1.15); }
 
 /* ────────────────────────────
    Bottom bar — desktop
@@ -192,10 +203,10 @@
   border: 2px solid var(--ft-blue);
   border-radius: 50%;
   cursor: pointer;
-  transition: color 0.15s, background 0.15s;
+  transition: color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 .ft-top svg { width: 2.2rem; height: 2.2rem; }
-.ft-top:hover { color: #fff; background: var(--ft-blue); }
+.ft-top:hover { color: #fff; background: var(--ft-blue); transform: translateY(-3px); box-shadow: 0 6px 16px rgba(31,111,224,0.3); }
 
 /* ── Focus styles ── */
 .ft a:focus-visible,

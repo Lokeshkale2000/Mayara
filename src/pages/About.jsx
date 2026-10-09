@@ -250,6 +250,13 @@ const css = `
   font-size: 15.5px;
   font-weight: 500;
   box-shadow: 0 1px 2px rgba(11, 29, 63, .06);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  cursor: default;
+}
+.ab__chips li:hover {
+  transform: translateY(-3px);
+  border-color: var(--ab-accent);
+  box-shadow: 0 6px 18px rgba(11,139,234,0.15);
 }
 
 /* ---------- Shared icon badge ---------- */
@@ -259,7 +266,7 @@ const css = `
   width: 54px;
   height: 54px;
   border-radius: 16px;
-  background: linear-gradient(140deg, #e3f1fe, #d5e6ff);
+  background: linear-gradient(135deg, #dbeafe, #ede9fe);
   color: var(--ab-accent);
 }
 .ab__icon--light { background: rgba(255, 255, 255, .18); color: #fff; }
@@ -352,12 +359,17 @@ const css = `
   border: 1px solid var(--ab-line);
   border-radius: var(--ab-radius);
   background: #fff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.ab__mv-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px -18px rgba(11,100,200,0.25);
 }
 .ab__mv-card h2 { margin: 24px 0 14px; font-size: clamp(26px, 2.8vw, 34px); font-weight: 600; letter-spacing: -0.015em; }
 .ab__mv-card p { color: var(--ab-muted); font-size: 18px; line-height: 1.75; }
 .ab__mv-card--mission {
   border: 0;
-  background: linear-gradient(140deg, var(--ab-accent), var(--ab-accent-dark));
+  background: linear-gradient(135deg, #0b8bea 0%, #4f46e5 100%);
   box-shadow: 0 24px 48px -24px rgba(11, 100, 200, .6);
 }
 .ab__mv-card--mission p { color: rgba(255, 255, 255, .92); }
@@ -385,7 +397,7 @@ const css = `
   border-color: rgba(11, 139, 234, .35);
   box-shadow: 0 18px 40px -18px rgba(11, 100, 200, .35);
 }
-.ab__value:hover .ab__icon { background: var(--ab-accent); color: #fff; }
+.ab__value:hover .ab__icon { background: linear-gradient(135deg, #0b8bea, #6366f1); color: #fff; }
 .ab__icon { transition: background-color .25s ease, color .25s ease; }
 .ab__value h3 { margin: 20px 0 8px; font-size: 21px; font-weight: 600; }
 .ab__value p { color: var(--ab-muted); font-size: 17px; line-height: 1.6; }
@@ -399,7 +411,7 @@ const css = `
   margin-top: clamp(48px, 7vw, 88px);
   padding: clamp(28px, 4vw, 52px);
   border-radius: 28px;
-  background: var(--ab-soft);
+  background: linear-gradient(135deg, #f0f5ff 0%, #ede9fe 100%);
   border: 1px solid var(--ab-line);
 }
 .ab__cta h2 { max-width: 22ch; font-size: clamp(24px, 3vw, 36px); line-height: 1.2; font-weight: 600; letter-spacing: -0.02em; }
@@ -407,14 +419,15 @@ const css = `
   flex: none;
   padding: 16px 30px;
   border-radius: 12px;
-  background: var(--ab-accent);
+  background: linear-gradient(135deg, #0b8bea, #4f46e5);
   color: #fff;
   font-size: 18px;
   font-weight: 500;
   text-decoration: none;
-  transition: background-color .2s ease, transform .2s ease;
+  transition: opacity .25s ease, transform .25s ease, box-shadow .25s ease;
+  box-shadow: 0 4px 14px rgba(11,139,234,0.3);
 }
-.ab__cta a:hover { background: var(--ab-accent-dark); transform: translateY(-2px); }
+.ab__cta a:hover { opacity: 0.88; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(11,139,234,0.45); }
 .ab__cta a:focus-visible { outline: 3px solid var(--ab-navy); outline-offset: 3px; }
 
 @keyframes ab-rise {

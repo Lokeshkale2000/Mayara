@@ -135,17 +135,19 @@ const css = `
   display: inline-block;
   padding: 14px 24px;
   border-radius: 10px;
-  background: var(--faq-accent);
+  background: linear-gradient(135deg, #0b8bea, #6366f1);
   color: #fff;
   font-size: 16px;
   font-weight: 500;
   text-decoration: none;
-  transition: background-color .2s ease;
+  transition: opacity .25s ease, transform .25s ease, box-shadow .25s ease;
+  box-shadow: 0 4px 14px rgba(11,139,234,0.25);
 }
-.faq__cta:hover { background: #0877c8; }
+.faq__cta:hover { opacity: 0.88; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(11,139,234,0.4); }
 
 .faq__list { border-top: 1px solid var(--faq-line); }
-.faq__item { border-bottom: 1px solid var(--faq-line); }
+.faq__item { border-bottom: 1px solid var(--faq-line); transition: background 0.2s ease; border-radius: 8px; }
+.faq__item:hover { background: linear-gradient(135deg, #f5f7ff, #f0f2fb); }
 .faq__heading { margin: 0; font-size: inherit; font-weight: inherit; }
 
 .faq__q {
@@ -154,7 +156,7 @@ const css = `
   justify-content: space-between;
   gap: 24px;
   width: 100%;
-  padding: 24px 0;
+  padding: 24px 12px;
   background: none;
   border: 0;
   color: inherit;
@@ -163,6 +165,7 @@ const css = `
   font-weight: 500;
   text-align: left;
   cursor: pointer;
+  transition: color 0.2s ease;
 }
 .faq__q:hover { color: var(--faq-accent); }
 .faq__q:focus-visible { outline: 3px solid var(--faq-accent); outline-offset: 2px; border-radius: 6px; }

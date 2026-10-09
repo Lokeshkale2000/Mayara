@@ -59,12 +59,12 @@ export const IMGS = {
 }
 
 export const COURSES = [
-  { t: 'Application Support', cat: 'IT',        img: 'support', s: 312, l: 24, skills: 'L1/L2 Support, SQL, Linux, Windows, Incident Management, Monitoring, ITIL' },
-  { t: 'SQL Developer',       cat: 'Developer', img: 'sql',     s: 268, l: 30, skills: 'SQL, PL/SQL, Stored Procedures, Performance Tuning, Database Concepts' },
-  { t: 'Java Developer',      cat: 'Developer', img: 'java',    s: 355, l: 42, skills: 'Core Java, Spring Boot, REST API, SQL, Git, Microservices' },
-  { t: 'Software Testing',    cat: 'IT',        img: 'test',    s: 224, l: 28, skills: 'Manual Testing, SQL, API Testing, Selenium, Java/Python, Agile' },
-  { t: 'DevOps',              cat: 'Developer', img: 'devops',  s: 189, l: 36, skills: 'Linux, Git, Jenkins, Docker, Kubernetes, CI/CD, Terraform' },
-  { t: 'AWS Cloud',           cat: 'IT',        img: 'aws',     s: 276, l: 34, skills: 'EC2, S3, IAM, VPC, RDS, CloudWatch, Load Balancer, AWS Security' },
+  { t: 'Application Support', cat: 'IT',        img: 'support', s: 312, l: 24, dur: '3 Months', skills: 'L1/L2 Support, SQL, Linux, Windows, Incident Management, Monitoring, ITIL' },
+  { t: 'SQL Developer',       cat: 'Developer', img: 'sql',     s: 268, l: 30, dur: '2 Months', skills: 'SQL, PL/SQL, Stored Procedures, Performance Tuning, Database Concepts' },
+  { t: 'Java Developer',      cat: 'Developer', img: 'java',    s: 355, l: 42, dur: '4 Months', skills: 'Core Java, Spring Boot, REST API, SQL, Git, Microservices' },
+  { t: 'Software Testing',    cat: 'IT',        img: 'test',    s: 224, l: 28, dur: '2.5 Months', skills: 'Manual Testing, SQL, API Testing, Selenium, Java/Python, Agile' },
+  { t: 'DevOps Engineer',     cat: 'Developer', img: 'devops',  s: 189, l: 36, dur: '3 Months', skills: 'Linux, Git, Jenkins, Docker, Kubernetes, CI/CD, Terraform' },
+  { t: 'AWS Cloud',           cat: 'IT',        img: 'aws',     s: 276, l: 34, dur: '3 Months', skills: 'EC2, S3, IAM, VPC, RDS, CloudWatch, Load Balancer, AWS Security' },
 ]
 
 const CATS = ['Developer', 'IT']
@@ -209,18 +209,40 @@ const css = `
 .cr-card {
   position: relative;
   border: 1px solid #e5e7eb;
-  border-radius: 6px;
+  border-radius: 14px;
   background: #fff;
   overflow: hidden;
-  min-height: 485px;
+  min-height: 388px;
   display: flex;
   flex-direction: column;
-  transition: background .2s;
+  box-shadow:
+    0 1px 3px rgba(13,139,242,0.06),
+    0 4px 12px rgba(13,139,242,0.08),
+    0 8px 24px rgba(20,33,61,0.06);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, background 0.2s;
   cursor: pointer;
 }
-.cr-card:hover, .cr-card:focus-within, .cr-card.open { background: #eef2f7; outline: none; }
+.cr-card:hover, .cr-card:focus-within {
+  transform: translateY(-8px);
+  box-shadow:
+    0 2px 6px rgba(13,139,242,0.1),
+    0 12px 28px rgba(13,139,242,0.18),
+    0 24px 48px rgba(20,33,61,0.12);
+  border-color: #0d8bf2;
+  outline: none;
+}
+.cr-card.open {
+  background: #eef2f7;
+  transform: translateY(-6px);
+  box-shadow:
+    0 2px 6px rgba(13,139,242,0.1),
+    0 10px 24px rgba(13,139,242,0.15),
+    0 20px 40px rgba(20,33,61,0.1);
+  border-color: #0d8bf2;
+  outline: none;
+}
 
-.cr-img { height: 249px; flex: none; }
+.cr-img { height: 199px; flex: none; }
 .cr-img svg, .cr-img > * { width: 100%; height: 100%; display: block; }
 
 .cr-tag {
@@ -238,7 +260,7 @@ const css = `
 .cr-card.open .cr-body { padding-top: 36px; }
 
 .cr-meta1 { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
-.cr-lvl { background: #f1f3f6; border-radius: 3px; padding: 3px 10px; font-size: 16px; }
+.cr-lvl { background: linear-gradient(135deg, #f1f3f6, #e8ecf4); border-radius: 3px; padding: 3px 10px; font-size: 16px; }
 .cr-free { color: #27b21a; font-size: 22px; }
 
 .cr-card h3 { font-size: 22px; line-height: 1.3; font-weight: 400; margin: 0 0 20px; }
@@ -251,7 +273,7 @@ const css = `
 
 .cr-btn {
   align-self: flex-start;
-  background: #0d8bf2;
+  background: linear-gradient(135deg, #0b84f3, #6366f1);
   color: #fff;
   border: 0;
   font: inherit;
@@ -259,9 +281,9 @@ const css = `
   padding: 14px 30px;
   border-radius: 4px;
   cursor: pointer;
-  transition: background .15s;
+  transition: opacity 0.22s, transform 0.22s, box-shadow 0.22s;
 }
-.cr-btn:hover { background: #0a6ccb; }
+.cr-btn:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(13,139,242,0.35); }
 
 .cr-empty { grid-column: 1 / -1; color: #6b7280; }
 

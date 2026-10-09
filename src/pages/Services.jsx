@@ -97,11 +97,11 @@ const css = `
 .sv__stage {
   padding: clamp(32px, 4vw, 56px);
   border-radius: 24px;
-  background: var(--sv-soft);
+  background: linear-gradient(160deg, #f0f5ff 0%, #eef1f8 100%);
   margin-bottom: 28px;
 }
 .sv__stage--dark {
-  background: var(--sv-navy);
+  background: linear-gradient(135deg, #0b1d3f 0%, #0d2d5e 100%);
   color: #fff;
 }
 
@@ -122,7 +122,7 @@ const css = `
   flex: none;
   padding: 6px 16px;
   border-radius: 999px;
-  background: var(--sv-blue);
+  background: linear-gradient(135deg, #0b84f3, #6366f1);
   color: #fff;
   font-size: 14px;
   font-weight: 600;
@@ -153,18 +153,22 @@ const css = `
   background: #fff;
   border: 1px solid var(--sv-line);
   border-radius: 14px;
-  transition: box-shadow 0.2s, border-color 0.2s;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 .sv__flow-card:hover {
   border-color: var(--sv-blue);
-  box-shadow: 0 8px 24px rgba(11,132,243,0.12);
+  box-shadow: 0 12px 32px rgba(11,132,243,0.15);
+  transform: translateY(-4px);
 }
 .sv__step {
   display: inline-block;
   margin-bottom: 12px;
   font-size: 13px;
   font-weight: 700;
-  color: var(--sv-blue);
+  background: linear-gradient(90deg, #0b84f3, #6366f1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   letter-spacing: 0.05em;
 }
 .sv__flow-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
@@ -189,11 +193,13 @@ const css = `
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: 14px;
   background: rgba(255,255,255,0.06);
-  transition: background 0.2s, border-color 0.2s;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 .sv__card:hover {
-  background: rgba(255,255,255,0.12);
-  border-color: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.25);
 }
 .sv__card h3 { font-size: 17px; font-weight: 600; color: #fff; margin-bottom: 10px; }
 .sv__card p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.65; }

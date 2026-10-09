@@ -1,11 +1,11 @@
 .hm-hero {
-  --hm-blue: #0b84f3;
-  --hm-blue-dark: #0a6ccb;
-  --hm-green: #2db300;
-  --hm-ink: #15181f;
-  --hm-muted: #4a4f5c;
-  --hm-tint: #e3f0fd;
-  --hm-dot: #f7b84b;
+  --hm-blue: #0369d1;
+  --hm-blue-dark: #1e40af;
+  --hm-green: #166534;
+  --hm-ink: #0f172a;
+  --hm-muted: #374151;
+  --hm-tint: #dbeafe;
+  --hm-dot: #f59e0b;
   background: #fff;
   color: var(--hm-ink);
   overflow: hidden;
@@ -58,24 +58,49 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 7rem;
-  padding: 0 2.5rem;
+  gap: 10px;
+  height: 6.4rem;
+  padding: 0 3.2rem;
   font: inherit;
-  font-size: 2.2rem;
-  font-weight: 600;
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
   color: #fff;
-  background: var(--hm-blue);
+  background: linear-gradient(135deg, #0b84f3 0%, #0554c2 100%);
   border: 0;
-  border-radius: 0.6rem;
+  border-radius: 50px;
   cursor: pointer;
   white-space: nowrap;
-  transition: background 0.15s, transform 0.15s;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  box-shadow: 0 6px 20px rgba(11,132,243,0.38), 0 2px 6px rgba(11,132,243,0.2);
 }
-.hm-btn:hover { background: var(--hm-blue-dark); transform: translateY(-1px); }
+.hm-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.22), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.55s ease;
+}
+.hm-btn:hover::before { left: 130%; }
+.hm-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(11,132,243,0.48), 0 4px 10px rgba(11,132,243,0.25);
+}
+.hm-btn:active { transform: translateY(-1px); }
 .hm-btn:focus-visible {
-  outline: 2px solid var(--hm-blue);
-  outline-offset: 3px;
+  outline: 3px solid #0b84f3;
+  outline-offset: 4px;
 }
+.hm-btn-arrow {
+  transition: transform 0.28s ease;
+  flex: none;
+}
+.hm-btn:hover .hm-btn-arrow { transform: translateX(5px); }
 
 /* ── Visual: height follows the image, so nothing is cropped or overflows ── */
 .hm-visual {
@@ -96,8 +121,13 @@
   aspect-ratio: 1376 / 768;
   margin-left: auto;
   object-fit: contain;
-  border-radius: 2 rem;
+  border-radius: 2rem;
   box-shadow: 0 2rem 5rem rgba(20, 30, 60, 0.14);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.hm-visual:hover .hm-photo {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 3rem 7rem rgba(20, 30, 60, 0.2);
 }
 
 .hm-square {
@@ -124,7 +154,7 @@
 
 /* ── Large laptops ── */
 @media (max-width: 1440px) {
-  .hm-btn { height: 6rem; font-size: 1.9rem; }
+  .hm-btn { height: 5.8rem; font-size: 1.75rem; padding: 0 2.8rem; }
   .hm-grid { gap: 3rem; }
 }
 
@@ -151,7 +181,7 @@
   .hm-grid { gap: 4rem; padding-top: 2.4rem; padding-bottom: 4rem; }
 
   .hm-title { margin-bottom: 3rem; }
-  .hm-btn { width: 100%; height: 5.4rem; font-size: 1.7rem; }
+  .hm-btn { width: 100%; height: 5.6rem; font-size: 1.7rem; justify-content: center; }
 
   .hm-photo { width: 94%; }
 }

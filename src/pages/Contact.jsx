@@ -203,14 +203,20 @@ const css = `
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: var(--ct-panel);
+  background: linear-gradient(135deg, #dbeafe, #ede9fe);
   color: var(--ct-accent);
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+.ct__list li:hover .ct__badge {
+  background: linear-gradient(135deg, #0b8bea, #6366f1);
+  color: #fff;
+  transform: scale(1.1);
 }
 .ct__label { display: block; color: var(--ct-muted); font-size: 18px; }
 .ct__value { display: block; color: var(--ct-ink); font-size: 18px; font-weight: 500; text-decoration: none; }
 a.ct__value:hover { color: var(--ct-accent); }
 
-.ct__form { padding: clamp(18px, 2.25vw, 28.5px); border-radius: 14px; background: var(--ct-panel); }
+.ct__form { padding: clamp(18px, 2.25vw, 28.5px); border-radius: 14px; background: linear-gradient(160deg, #f1f2f8 0%, #eaecf8 100%); }
 .ct__form-title { margin: 0 0 21px; font-size: 16.5px; font-weight: 500; }
 
 .ct__field { margin-bottom: 15px; }
@@ -225,13 +231,14 @@ a.ct__value:hover { color: var(--ct-accent); }
   color: var(--ct-ink);
   font: inherit;
   font-size: 12.75px;
-  transition: border-color .2s ease, box-shadow .2s ease;
+  transition: border-color .25s ease, box-shadow .25s ease, transform .2s ease;
 }
 .ct__field textarea { resize: vertical; min-height: 97.5px; }
 .ct__field input:focus, .ct__field textarea:focus {
   outline: none;
   border-color: var(--ct-accent);
   box-shadow: 0 0 0 3px rgba(11, 139, 234, .2);
+  transform: translateY(-1px);
 }
 .ct__field [aria-invalid="true"] { border-color: var(--ct-error); }
 .ct__err { margin: 6px 0 0; color: var(--ct-error); font-size: 15px; }
@@ -240,15 +247,16 @@ a.ct__value:hover { color: var(--ct-accent); }
   padding: 16px 30px;
   border: 0;
   border-radius: 8px;
-  background: var(--ct-accent);
+  background: linear-gradient(135deg, #0b8bea, #6366f1);
   color: #fff;
   font: inherit;
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color .2s ease;
+  transition: opacity .25s ease, transform .25s ease, box-shadow .25s ease;
+  box-shadow: 0 4px 14px rgba(11,139,234,0.25);
 }
-.ct__send:hover:not(:disabled) { background: #0877c8; }
+.ct__send:hover:not(:disabled) { opacity: 0.88; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(11,139,234,0.4); }
 .ct__send:disabled { opacity: .65; cursor: progress; }
 .ct__send:focus-visible { outline: 3px solid var(--ct-ink); outline-offset: 3px; }
 .ct__status { min-height: 1.4em; margin: 16px 0 0; color: var(--ct-muted); font-size: 16px; }
