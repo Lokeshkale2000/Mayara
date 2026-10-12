@@ -441,14 +441,14 @@ const TESTIMONIALS = [
   },
   {
     name: 'Falguni',
-    role: '1,2k Student',
+    role: 'Software Developer, Pune',
     text: '"I recommend Skill Up Career to anyone looking to learn and upskill...If you are in the job market, you might want to add a new skill or forge a new path."',
     rating: 5,
     tone: '#2e3a3f',
   },
   {
     name: 'Sayali',
-    role: '1,2k Student',
+    role: 'Software Developer, Pune',
     text: '"Skill Up Career courses are always interesting and informative. They bring the classroom right to you and send you on a journey to explore new ideas and offer interesting topics."',
     rating: 5,
     tone: '#5a1f1f',

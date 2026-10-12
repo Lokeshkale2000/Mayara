@@ -151,13 +151,18 @@
   flex-wrap: wrap;
 }
 
-.ft-legal a {
+.ft-legal a, .ft-legal-btn {
   font-size: 1.4rem;
   color: var(--ft-ink);
   text-decoration: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
   transition: color 0.15s;
 }
-.ft-legal a:hover { color: var(--ft-blue); }
+.ft-legal a:hover, .ft-legal-btn:hover { color: var(--ft-blue); }
 
 .ft-copy {
   margin: 0;

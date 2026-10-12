@@ -8,6 +8,9 @@ import Blog from './pages/Blog'
 import FAQ from './pages/FAQ'
 import Courses from './pages/Courses'
 import Contact from './pages/Contact'
+import Terms from './pages/Terms'
+import Privacy from './pages/Privacy'
+import Cookies from './pages/Cookies'
 import './index.css'
 
 const PAGES = {
@@ -18,6 +21,9 @@ const PAGES = {
   blog: Blog,
   faq: FAQ,
   contact: Contact,
+  terms: Terms,
+  privacy: Privacy,
+  cookies: Cookies,
 }
 
 // Map URL path → page key
@@ -30,12 +36,16 @@ function pathToPage(path) {
     '/blog': 'blog',
     '/faq': 'faq',
     '/contact': 'contact',
+    '/terms': 'terms',
+    '/privacy': 'privacy',
+    '/cookies': 'cookies',
   }
   return map[path] || 'home'
 }
 
 export default function App() {
   const [page, setPage] = useState(() => pathToPage(window.location.pathname))
+  const [search, setSearch] = useState('')
 
   // Handle browser back/forward buttons
   useEffect(() => {
@@ -50,12 +60,17 @@ export default function App() {
     setPage(key)
   }
 
+  const handleSearch = (q) => {
+    setSearch(q)
+    if (q.trim()) navigate('courses')
+  }
+
   const Page = PAGES[page] || Home
 
   return (
     <>
-      <Navbar currentPage={page} onNavigate={navigate} cartCount={3} />
-      <Page onNavigate={navigate} />
+      <Navbar currentPage={page} onNavigate={navigate} search={search} onSearch={handleSearch} />
+      <Page onNavigate={navigate} search={search} />
       <Footer onNavigate={navigate} />
     </>
   )

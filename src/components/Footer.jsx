@@ -91,7 +91,7 @@ export default function Footer({ onNavigate = () => {} }) {
                 </span>
                 <span>
                   <span className="ft-label">Address</span>
-                  <a className="ft-value" href="https://www.google.com/maps/search/502,+4th+Floor,+Dangat+Patil+Empire,+Kudale+Baug,+Vadgaon+Budruk,+Pune,+Maharashtra+411041/@18.4603799,73.8211911,17z/data=!3m1!4b1?authuser=0&entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Pune</a>
+                  <a className="ft-value" href="https://www.google.com/maps/search/502,+4th+Floor,+Dangat+Patil+Empire,+Kudale+Baug,+Vadgaon+Budruk,+Pune,+Maharashtra+411041/@18.4603799,73.8211911,17z/data=!3m1!4b1?authuser=0&entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">502, 4th Floor, Dangat Patil Empire, Kudale Baug, Vadgaon Budruk, Pune, Maharashtra 411041</a>
                 </span>
               </li>
               <li>
@@ -149,9 +149,9 @@ export default function Footer({ onNavigate = () => {} }) {
       <div className="ft-bar">
         <div className="ft-bar-inner">
           <nav className="ft-legal" aria-label="Legal">
-            <a href="#terms">Terms of use</a>
-            <a href="#privacy">Privacy policy</a>
-            <a href="#cookies">Cookies policy</a>
+            <button className="ft-legal-btn" onClick={() => go('terms')}>Terms of use</button>
+            <button className="ft-legal-btn" onClick={() => go('privacy')}>Privacy policy</button>
+            <button className="ft-legal-btn" onClick={() => go('cookies')}>Cookies policy</button>
           </nav>
 
           <p className="ft-copy">&copy; {new Date().getFullYear()} MayaraTech. All rights reserved.</p>

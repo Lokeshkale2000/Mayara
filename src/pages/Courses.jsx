@@ -69,7 +69,7 @@ export const COURSES = [
 
 const CATS = ['Developer', 'IT']
 
-export default function Courses({ onNavigate = () => {} }) {
+export default function Courses({ onNavigate = () => {}, search = '' }) {
   const [filters, setFilters] = useState([])
   const [sort, setSort] = useState('new')
   const [hovered, setHovered] = useState(null)
@@ -79,9 +79,17 @@ export default function Courses({ onNavigate = () => {} }) {
 
   const list = useMemo(() => {
     let r = filters.length ? COURSES.filter((c) => filters.includes(c.cat)) : COURSES
+    if (search.trim()) {
+      const q = search.trim().toLowerCase()
+      r = r.filter((c) =>
+        c.t.toLowerCase().includes(q) ||
+        c.skills.toLowerCase().includes(q) ||
+        c.cat.toLowerCase().includes(q)
+      )
+    }
     if (sort === 'az') r = [...r].sort((a, b) => a.t.localeCompare(b.t))
     return r
-  }, [filters, sort])
+  }, [filters, sort, search])
 
   return (
     <div className="cr-wrap">
@@ -117,7 +125,7 @@ export default function Courses({ onNavigate = () => {} }) {
           </div>
 
           <div className="cr-grid">
-            {list.length === 0 && <p className="cr-empty">Clear a filter to see all courses.</p>}
+            {list.length === 0 && <p className="cr-empty">{search.trim() ? `No courses found for "${search}"` : 'Clear a filter to see all courses.'}</p>}
             {list.map((c) => {
               const open = hovered === c.t
               return (
@@ -170,7 +178,7 @@ const css = `
 }
 .cr-wrap *, .cr-wrap *::before, .cr-wrap *::after { box-sizing: inherit; }
 
-.cr-crumb { text-align: center; color: #6b7280; font-size: 18px; margin-bottom: 40px; }
+.cr-crumb { text-align: center; color: #111827; font-size: 18px; font-weight: 700; margin-bottom: 40px; }
 .cr-crumb span { margin: 0 12px; opacity: .6; }
 
 .cr-layout { display: grid; grid-template-columns: 280px 1fr; gap: 36px; }
@@ -188,7 +196,7 @@ const css = `
   font-size: 17px;
 }
 .cr-filter input { width: 20px; height: 20px; accent-color: #0d8bf2; margin: 0; cursor: pointer; }
-.cr-n { margin-left: auto; color: #6b7280; }
+.cr-n { margin-left: auto; color: #111827; }
 
 .cr-top {
   display: flex;
@@ -197,8 +205,8 @@ const css = `
   margin-bottom: 24px;
   gap: 12px;
 }
-.cr-top p { margin: 0; color: #6b7280; font-size: 19px; }
-.cr-top select { font: inherit; font-size: 18px; color: #6b7280; background: transparent; border: 0; cursor: pointer; }
+.cr-top p { margin: 0; color: #111827; font-size: 19px; }
+.cr-top select { font: inherit; font-size: 18px; color: #111827; background: transparent; border: 0; cursor: pointer; }
 
 .cr-grid {
   display: grid;
@@ -265,11 +273,11 @@ const css = `
 
 .cr-card h3 { font-size: 22px; line-height: 1.3; font-weight: 400; margin: 0 0 20px; }
 
-.cr-stats { display: flex; gap: 28px; color: #6b7280; font-size: 16px; margin-top: auto; }
+.cr-stats { display: flex; gap: 28px; color: #111827; font-size: 16px; margin-top: auto; }
 .cr-card.open .cr-stats { margin-top: 0; margin-bottom: 22px; }
 .cr-stats span { display: flex; align-items: center; gap: 8px; }
 
-.cr-skills { color: #6b7280; font-size: 17px; line-height: 1.55; margin: 0 0 26px; }
+.cr-skills { color: #111827; font-size: 17px; line-height: 1.55; margin: 0 0 26px; }
 
 .cr-btn {
   align-self: flex-start;
@@ -285,7 +293,7 @@ const css = `
 }
 .cr-btn:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(13,139,242,0.35); }
 
-.cr-empty { grid-column: 1 / -1; color: #6b7280; }
+.cr-empty { grid-column: 1 / -1; color: #111827; }
 
 @media (max-width: 1100px) { .cr-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 820px) {
