@@ -92,192 +92,364 @@ export default function Courses({ onNavigate = () => {}, search = '' }) {
   }, [filters, sort, search])
 
   return (
-    <div className="cr-wrap">
+    <div>
       <style>{css}</style>
 
-      <p className="cr-crumb">Courses</p>
-
-      <div className="cr-layout">
-        {/* Sidebar */}
-        <aside className="cr-side">
-          <div className="cr-side-block">
-            <h2>Categories</h2>
-            {CATS.map((cat) => (
-              <label className="cr-filter" key={cat}>
-                <input type="checkbox" checked={filters.includes(cat)} onChange={() => toggle(cat)} />
-                {cat}
-                <span className="cr-n">{COURSES.filter((c) => c.cat === cat).length}</span>
-              </label>
-            ))}
+      {/* Hero Banner */}
+      <div className="cr-hero">
+        <div className="cr-hero-inner">
+          <span className="cr-hero-pill">🎓 Industry-Ready Curriculum</span>
+          <h1 className="cr-hero-title">Explore Our <span>Courses</span></h1>
+          <p className="cr-hero-sub">Hands-on training in the most in-demand IT skills — designed to get you placed.</p>
+          <div className="cr-hero-stats">
+            <div><strong>6+</strong><span>Courses</span></div>
+            <div><strong>50K+</strong><span>Students</span></div>
+            <div><strong>4.8★</strong><span>Rating</span></div>
+            <div><strong>100%</strong><span>Job Focused</span></div>
           </div>
-        </aside>
+        </div>
+      </div>
 
-        {/* Main */}
-        <main>
-          <div className="cr-top">
-            <p>{list.length ? `Showing 1–${list.length} of ${list.length} results` : 'No courses match these filters'}</p>
-            <select value={sort} onChange={(e) => setSort(e.target.value)} aria-label="Sort courses">
-              <option value="new">Newly published</option>
-              <option value="az">Title A–Z</option>
+      <div className="cr-wrap">
+        <div className="cr-layout">
+          {/* Sidebar */}
+          <aside className="cr-side">
+            <div className="cr-side-block">
+              <h2>Categories</h2>
+              {CATS.map((cat) => (
+                <label className="cr-filter" key={cat}>
+                  <input type="checkbox" checked={filters.includes(cat)} onChange={() => toggle(cat)} />
+                  <span className="cr-filter-label">{cat}</span>
+                  <span className="cr-n">{COURSES.filter((c) => c.cat === cat).length}</span>
+                </label>
+              ))}
+            </div>
+            <div className="cr-side-cta">
+              <p>Not sure which course?</p>
+              <button onClick={() => onNavigate('contact')}>Get Free Guidance</button>
+            </div>
+          </aside>
 
-              
-            </select>
-          </div>
+          {/* Main */}
+          <main>
+            <div className="cr-top">
+              <p>{list.length ? `Showing <strong>${list.length}</strong> courses` : 'No courses match'}</p>
+              <select value={sort} onChange={(e) => setSort(e.target.value)} aria-label="Sort courses">
+                <option value="new">Newly published</option>
+                <option value="az">Title A–Z</option>
+              </select>
+            </div>
 
-          <div className="cr-grid">
-            {list.length === 0 && <p className="cr-empty">{search.trim() ? `No courses found for "${search}"` : 'Clear a filter to see all courses.'}</p>}
-            {list.map((c) => {
-              const open = hovered === c.t
-              return (
-                <article
-                  key={c.t}
-                  className={`cr-card${open ? ' open' : ''}`}
-                  tabIndex={0}
-                  onMouseEnter={() => setHovered(c.t)}
-                  onMouseLeave={() => setHovered(null)}
-                  onFocus={() => setHovered(c.t)}
-                  onBlur={() => setHovered(null)}
-                >
-                  {!open && (
-                    <div className="cr-img" dangerouslySetInnerHTML={{ __html: IMGS[c.img] }}>
-                    </div>
-                  )}
-                  {!open && <span className="cr-tag">{c.cat}</span>}
-
-                  <div className="cr-body">
-                    <div className="cr-meta1">
-                      <span className="cr-lvl">All levels</span>
-                    </div>
-                    <h3>{c.t}</h3>
-                    <div className="cr-stats">
-                      <span>{DOC}{c.l} Lessons</span>
-                    </div>
-                    {open && <p className="cr-skills">{c.skills}</p>}
-                    {open && (
-                      <button className="cr-btn" onClick={() => onNavigate('contact')}>Enquire Now</button>
+            <div className="cr-grid">
+              {list.length === 0 && <p className="cr-empty">{search.trim() ? `No courses found for "${search}"` : 'Clear a filter to see all courses.'}</p>}
+              {list.map((c) => {
+                const open = hovered === c.t
+                return (
+                  <article
+                    key={c.t}
+                    className={`cr-card${open ? ' open' : ''}`}
+                    tabIndex={0}
+                    onMouseEnter={() => setHovered(c.t)}
+                    onMouseLeave={() => setHovered(null)}
+                    onFocus={() => setHovered(c.t)}
+                    onBlur={() => setHovered(null)}
+                  >
+                    {!open && (
+                      <div className="cr-img" dangerouslySetInnerHTML={{ __html: IMGS[c.img] }} />
                     )}
-                  </div>
-                </article>
-              )
-            })}
-          </div>
-        </main>
+                    {!open && <span className="cr-tag">{c.cat}</span>}
+
+                    <div className="cr-body">
+                      <div className="cr-meta1">
+                        <span className="cr-lvl">All levels</span>
+                        <span className="cr-dur">⏱ {c.dur}</span>
+                      </div>
+                      <h3>{c.t}</h3>
+                      <div className="cr-stats">
+                        <span>{DOC}{c.l} Lessons</span>
+                      </div>
+                      {open && <p className="cr-skills">{c.skills}</p>}
+                      {open && (
+                        <button className="cr-btn" onClick={() => onNavigate('contact')}>Enquire Now →</button>
+                      )}
+                    </div>
+                  </article>
+                )
+              })}
+            </div>
+          </main>
+        </div>
       </div>
     </div>
   )
 }
 
 const css = `
+/* ── Hero ── */
+.cr-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #0b84f3 100%);
+  padding: clamp(48px, 7vw, 96px) 24px clamp(40px, 6vw, 80px);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cr-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(99,102,241,0.25) 0%, transparent 65%);
+  pointer-events: none;
+}
+.cr-hero-inner { position: relative; max-width: 760px; margin: 0 auto; }
+.cr-hero-pill {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #e0f0ff;
+  border-radius: 999px;
+  padding: 6px 20px;
+  font-size: 14px;
+  letter-spacing: .06em;
+  margin-bottom: 20px;
+}
+.cr-hero-title {
+  margin: 0 0 16px;
+  font-size: clamp(32px, 5vw, 58px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+}
+.cr-hero-title span { color: #60b4ff; }
+.cr-hero-sub {
+  margin: 0 0 36px;
+  font-size: clamp(15px, 2vw, 18px);
+  color: rgba(255,255,255,0.75);
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cr-hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: clamp(20px, 4vw, 56px);
+  flex-wrap: wrap;
+}
+.cr-hero-stats div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.cr-hero-stats strong {
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700;
+  color: #fff;
+}
+.cr-hero-stats span {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+/* ── Wrap ── */
 .cr-wrap {
   max-width: 1240px;
   margin: 0 auto;
-  padding: clamp(24px, 4vw, 56px) 20px 64px;
+  padding: clamp(32px, 4vw, 56px) 20px 80px;
   font: 300 17px/1.5 "Outfit", system-ui, sans-serif;
   color: #14213d;
   box-sizing: border-box;
 }
 .cr-wrap *, .cr-wrap *::before, .cr-wrap *::after { box-sizing: inherit; }
 
-.cr-crumb { text-align: center; color: #111827; font-size: 18px; font-weight: 700; margin-bottom: 40px; }
-.cr-crumb span { margin: 0 12px; opacity: .6; }
+.cr-layout { display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: start; }
 
-.cr-layout { display: grid; grid-template-columns: 280px 1fr; gap: 36px; }
-
-.cr-side-block { margin-bottom: 40px; }
-.cr-side-block h2 { font-size: 30px; font-weight: 500; margin: 0 0 16px; }
+/* ── Sidebar ── */
+.cr-side { position: sticky; top: calc(var(--nb-h, 7.4rem) + 20px); }
+.cr-side-block {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.cr-side-block h2 { font-size: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: #6b7280; margin: 0 0 16px; }
 
 .cr-filter {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 16px 0;
-  border-bottom: 1px solid #e5e7eb;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f4f6;
   cursor: pointer;
-  font-size: 17px;
+  font-size: 15px;
+  color: #374151;
+  transition: color 0.2s;
 }
-.cr-filter input { width: 20px; height: 20px; accent-color: #0d8bf2; margin: 0; cursor: pointer; }
-.cr-n { margin-left: auto; color: #111827; }
+.cr-filter:last-child { border-bottom: 0; }
+.cr-filter:hover { color: #0d8bf2; }
+.cr-filter input { width: 18px; height: 18px; accent-color: #0d8bf2; margin: 0; cursor: pointer; flex: none; }
+.cr-filter-label { flex: 1; font-weight: 400; }
+.cr-n {
+  background: #f1f5f9;
+  color: #64748b;
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
 
+.cr-side-cta {
+  background: linear-gradient(135deg, #0f172a, #1e3a5f);
+  border-radius: 14px;
+  padding: 24px;
+  text-align: center;
+  color: #fff;
+}
+.cr-side-cta p { margin: 0 0 14px; font-size: 15px; color: rgba(255,255,255,0.8); }
+.cr-side-cta button {
+  width: 100%;
+  background: linear-gradient(135deg, #0b84f3, #6366f1);
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 12px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.cr-side-cta button:hover { opacity: 0.88; transform: translateY(-2px); }
+
+/* ── Top bar ── */
 .cr-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
   gap: 12px;
 }
-.cr-top p { margin: 0; color: #111827; font-size: 19px; }
-.cr-top select { font: inherit; font-size: 18px; color: #111827; background: transparent; border: 0; cursor: pointer; }
+.cr-top p { margin: 0; color: #6b7280; font-size: 15px; }
+.cr-top p strong { color: #111827; }
+.cr-top select {
+  font: inherit;
+  font-size: 15px;
+  color: #374151;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  outline: none;
+}
+.cr-top select:focus { border-color: #0d8bf2; }
 
+/* ── Grid ── */
 .cr-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 38px;
+  gap: 28px;
 }
 
+/* ── Card ── */
 .cr-card {
   position: relative;
   border: 1px solid #e5e7eb;
-  border-radius: 14px;
+  border-radius: 16px;
   background: #fff;
   overflow: hidden;
-  min-height: 388px;
+  min-height: 360px;
   display: flex;
   flex-direction: column;
-  box-shadow:
-    0 1px 3px rgba(13,139,242,0.06),
-    0 4px 12px rgba(13,139,242,0.08),
-    0 8px 24px rgba(20,33,61,0.06);
-  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, background 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
   cursor: pointer;
 }
 .cr-card:hover, .cr-card:focus-within {
   transform: translateY(-8px);
-  box-shadow:
-    0 2px 6px rgba(13,139,242,0.1),
-    0 12px 28px rgba(13,139,242,0.18),
-    0 24px 48px rgba(20,33,61,0.12);
+  box-shadow: 0 16px 40px rgba(13,139,242,0.16), 0 4px 12px rgba(0,0,0,0.08);
   border-color: #0d8bf2;
   outline: none;
 }
 .cr-card.open {
-  background: #eef2f7;
+  background: #f8faff;
   transform: translateY(-6px);
-  box-shadow:
-    0 2px 6px rgba(13,139,242,0.1),
-    0 10px 24px rgba(13,139,242,0.15),
-    0 20px 40px rgba(20,33,61,0.1);
+  box-shadow: 0 12px 32px rgba(13,139,242,0.14);
   border-color: #0d8bf2;
-  outline: none;
 }
 
-.cr-img { height: 199px; flex: none; }
+.cr-img { height: 190px; flex: none; position: relative; }
 .cr-img svg, .cr-img > * { width: 100%; height: 100%; display: block; }
+.cr-img::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.15));
+}
 
 .cr-tag {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  background: #fff;
-  color: #14213d;
-  border-radius: 3px;
-  padding: 3px 10px;
-  font-size: 17px;
+  top: 14px;
+  right: 14px;
+  background: rgba(255,255,255,0.95);
+  color: #0d8bf2;
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
 
-.cr-body { padding: 40px 38px 30px; display: flex; flex-direction: column; flex: 1; }
-.cr-card.open .cr-body { padding-top: 36px; }
+.cr-body { padding: 24px 24px 22px; display: flex; flex-direction: column; flex: 1; }
+.cr-card.open .cr-body { padding-top: 22px; }
 
-.cr-meta1 { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
-.cr-lvl { background: linear-gradient(135deg, #f1f3f6, #e8ecf4); border-radius: 3px; padding: 3px 10px; font-size: 16px; }
-.cr-free { color: #27b21a; font-size: 22px; }
+.cr-meta1 { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.cr-lvl {
+  background: #f1f5f9;
+  color: #475569;
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.cr-dur {
+  background: #fff7ed;
+  color: #c2410c;
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
 
-.cr-card h3 { font-size: 22px; line-height: 1.3; font-weight: 400; margin: 0 0 20px; }
+.cr-card h3 {
+  font-size: 18px;
+  line-height: 1.35;
+  font-weight: 600;
+  margin: 0 0 14px;
+  color: #0f172a;
+}
 
-.cr-stats { display: flex; gap: 28px; color: #111827; font-size: 16px; margin-top: auto; }
-.cr-card.open .cr-stats { margin-top: 0; margin-bottom: 22px; }
-.cr-stats span { display: flex; align-items: center; gap: 8px; }
+.cr-stats { display: flex; gap: 20px; color: #6b7280; font-size: 14px; margin-top: auto; }
+.cr-card.open .cr-stats { margin-top: 0; margin-bottom: 16px; }
+.cr-stats span { display: flex; align-items: center; gap: 6px; }
 
-.cr-skills { color: #111827; font-size: 17px; line-height: 1.55; margin: 0 0 26px; }
+.cr-skills {
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 20px;
+  padding: 12px 14px;
+  background: #f1f5f9;
+  border-radius: 8px;
+  border-left: 3px solid #0d8bf2;
+}
 
 .cr-btn {
   align-self: flex-start;
@@ -285,25 +457,27 @@ const css = `
   color: #fff;
   border: 0;
   font: inherit;
-  font-size: 19px;
-  padding: 14px 30px;
-  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 12px 26px;
+  border-radius: 8px;
   cursor: pointer;
   transition: opacity 0.22s, transform 0.22s, box-shadow 0.22s;
+  letter-spacing: .02em;
 }
-.cr-btn:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(13,139,242,0.35); }
+.cr-btn:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(13,139,242,0.35); }
 
-.cr-empty { grid-column: 1 / -1; color: #111827; }
+.cr-empty { grid-column: 1 / -1; color: #6b7280; text-align: center; padding: 48px 0; font-size: 16px; }
 
 @media (max-width: 1100px) { .cr-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 820px) {
   .cr-layout { grid-template-columns: 1fr; }
-  .cr-side { display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; }
-  .cr-side-block { margin-bottom: 24px; }
+  .cr-side { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 }
 @media (max-width: 600px) {
   .cr-grid { grid-template-columns: 1fr; }
-  .cr-body { padding: 28px 24px 24px; }
+  .cr-body { padding: 20px 18px 18px; }
+  .cr-hero-stats { gap: 24px; }
 }
 @media (prefers-reduced-motion: reduce) { .cr-card { transition: none; } }
 `

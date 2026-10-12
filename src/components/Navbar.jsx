@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import logo from '../assets/marayatech-logo-horizontal-transparent.png'
+import logo from '../assets/mayaratech-logo-horizontal-transparent.png'
 
 const LINKS = [
   { page: 'home', label: 'Home' },
