@@ -105,7 +105,7 @@ export default function About({
       {/* ---------- Banner ---------- */}
       <div className={`ab__banner${image ? " ab__banner--photo" : ""}`}>
         {image ? (
-          <img src={image} alt={imageAlt} loading="lazy" />
+          <img src={image} alt={imageAlt} loading="lazy" decoding="async" />
         ) : (
           <>
             <p className="ab__banner-text">The ecosystem we are building</p>

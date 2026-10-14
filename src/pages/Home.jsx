@@ -83,7 +83,7 @@ export default function Home({ onNavigate = () => {} }) {
           <div className="hm-visual">
             <span className="hm-square" aria-hidden="true" />
             <span className="hm-dots" aria-hidden="true" />
-            <img className="hm-photo" src={HERO_IMAGE} alt="Learner studying online with headphones" />
+            <img className="hm-photo" src={HERO_IMAGE} alt="Learner studying online with headphones" loading="lazy" decoding="async" />
           </div>
 
         </div>
@@ -303,7 +303,7 @@ function StudentResults() {
           <figure className="sr-card" key={t.name}>
             <figcaption className="sr-head">
               {t.photo ? (
-                <img src={t.photo} alt="" className="sr-avatar" />
+                <img src={t.photo} alt="" className="sr-avatar" loading="lazy" decoding="async" />
               ) : (
                 <span className="sr-avatar" style={{ background: t.tone }} aria-hidden="true">
                   {initials(t.name)}

@@ -1,17 +1,18 @@
-import { useState, useEffect } from 'react'
+import { lazy, Suspense, useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import Home from './pages/Home'
-import About from './pages/About'
-import Services from './pages/Services'
-import Blog from './pages/Blog'
-import FAQ from './pages/FAQ'
-import Courses from './pages/Courses'
-import Contact from './pages/Contact'
-import Terms from './pages/Terms'
-import Privacy from './pages/Privacy'
-import Cookies from './pages/Cookies'
 import './index.css'
+
+const Home = lazy(() => import('./pages/Home'))
+const About = lazy(() => import('./pages/About'))
+const Services = lazy(() => import('./pages/Services'))
+const Blog = lazy(() => import('./pages/Blog'))
+const FAQ = lazy(() => import('./pages/FAQ'))
+const Courses = lazy(() => import('./pages/Courses'))
+const Contact = lazy(() => import('./pages/Contact'))
+const Terms = lazy(() => import('./pages/Terms'))
+const Privacy = lazy(() => import('./pages/Privacy'))
+const Cookies = lazy(() => import('./pages/Cookies'))
 
 const PAGES = {
   courses: Courses,
@@ -70,7 +71,9 @@ export default function App() {
   return (
     <>
       <Navbar currentPage={page} onNavigate={navigate} search={search} onSearch={handleSearch} />
-      <Page onNavigate={navigate} search={search} />
+      <Suspense fallback={<main aria-live="polite">Loading page...</main>}>
+        <Page onNavigate={navigate} search={search} />
+      </Suspense>
       <Footer onNavigate={navigate} />
     </>
   )

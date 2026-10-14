@@ -45,7 +45,7 @@ export default function Navbar({ currentPage, onNavigate, search = '', onSearch 
 
         {/* Logo */}
         <button className="nb-brand" onClick={() => go('home')} aria-label="Go to home">
-          <img src={logo} alt="" className="nb-logo" />
+          <img src={logo} alt="" className="nb-logo" loading="lazy" decoding="async" />
 
         </button>
 
