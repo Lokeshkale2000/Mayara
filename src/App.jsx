@@ -71,7 +71,7 @@ export default function App() {
   return (
     <>
       <Navbar currentPage={page} onNavigate={navigate} search={search} onSearch={handleSearch} />
-      <Suspense fallback={<main aria-live="polite">Loading page...</main>}>
+      <Suspense fallback={null}>
         <Page onNavigate={navigate} search={search} />
       </Suspense>
       <Footer onNavigate={navigate} />
