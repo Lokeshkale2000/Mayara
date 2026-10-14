@@ -1,3 +1,4 @@
+import './Contact.css'
 import { useState } from "react";
 
 const DEFAULT_INFO = {
@@ -65,7 +66,6 @@ export default function Contact({ info = DEFAULT_INFO, onSubmit }) {
 
   return (
     <section className="ct" aria-labelledby="ct-title">
-      <style>{css}</style>
 
       <header className="ct__head">
         <h1 id="ct-title" className="ct__title">
@@ -151,120 +151,4 @@ export default function Contact({ info = DEFAULT_INFO, onSubmit }) {
   );
 }
 
-const css = `
-.ct {
-  --ct-accent: #0b8bea;
-  --ct-ink: #14172b;
-  --ct-muted: #5d6478;
-  --ct-panel: #f1f2f8;
-  --ct-error: #c62828;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: clamp(24px, 4vw, 56px) 24px clamp(48px, 7vw, 96px);
-  color: var(--ct-ink);
-  font-family: "Outfit", "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
-  box-sizing: border-box;
-}
-.ct *, .ct *::before, .ct *::after { box-sizing: inherit; }
 
-.ct__head { text-align: center; margin-bottom: clamp(40px, 6vw, 72px); }
-.ct__eyebrow { margin: 0 0 20px; color: var(--ct-muted); font-size: 16px; }
-.ct__title {
-  margin: 0;
-  font-size: clamp(30px, 5vw, 58px);
-  line-height: 1.18;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-
-.ct__body {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(32px, 5vw, 64px);
-  align-items: start;
-}
-
-.ct__kicker { margin: 0 0 14px; font-size: 18px; font-weight: 500; }
-.ct__sub {
-  margin: 0 0 28px;
-  font-size: clamp(28px, 3.4vw, 42px);
-  line-height: 1.2;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-}
-.ct__text { margin: 0 0 36px; max-width: 56ch; color: var(--ct-muted); font-size: 18px; line-height: 1.7; }
-
-.ct__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
-.ct__list li { display: flex; align-items: center; gap: 18px; }
-.ct__badge {
-  flex: none;
-  display: grid;
-  place-items: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #dbeafe, #ede9fe);
-  color: var(--ct-accent);
-  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
-}
-.ct__list li:hover .ct__badge {
-  background: linear-gradient(135deg, #0b8bea, #6366f1);
-  color: #fff;
-  transform: scale(1.1);
-}
-.ct__label { display: block; color: var(--ct-muted); font-size: 18px; }
-.ct__value { display: block; color: var(--ct-ink); font-size: 18px; font-weight: 500; text-decoration: none; }
-a.ct__value:hover { color: var(--ct-accent); }
-
-.ct__form { padding: clamp(18px, 2.25vw, 28.5px); border-radius: 14px; background: linear-gradient(160deg, #f1f2f8 0%, #eaecf8 100%); }
-.ct__form-title { margin: 0 0 21px; font-size: 16.5px; font-weight: 500; }
-
-.ct__field { margin-bottom: 15px; }
-.ct__field label { display: block; margin-bottom: 6px; color: var(--ct-muted); font-size: 12px; }
-.ct__field input, .ct__field textarea {
-  display: block;
-  width: 100%;
-  padding: 12px 13.5px;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  background: #fff;
-  color: var(--ct-ink);
-  font: inherit;
-  font-size: 12.75px;
-  transition: border-color .25s ease, box-shadow .25s ease, transform .2s ease;
-}
-.ct__field textarea { resize: vertical; min-height: 97.5px; }
-.ct__field input:focus, .ct__field textarea:focus {
-  outline: none;
-  border-color: var(--ct-accent);
-  box-shadow: 0 0 0 3px rgba(11, 139, 234, .2);
-  transform: translateY(-1px);
-}
-.ct__field [aria-invalid="true"] { border-color: var(--ct-error); }
-.ct__err { margin: 6px 0 0; color: var(--ct-error); font-size: 15px; }
-
-.ct__send {
-  padding: 16px 30px;
-  border: 0;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #0b8bea, #6366f1);
-  color: #fff;
-  font: inherit;
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: opacity .25s ease, transform .25s ease, box-shadow .25s ease;
-  box-shadow: 0 4px 14px rgba(11,139,234,0.25);
-}
-.ct__send:hover:not(:disabled) { opacity: 0.88; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(11,139,234,0.4); }
-.ct__send:disabled { opacity: .65; cursor: progress; }
-.ct__send:focus-visible { outline: 3px solid var(--ct-ink); outline-offset: 3px; }
-.ct__status { min-height: 1.4em; margin: 16px 0 0; color: var(--ct-muted); font-size: 16px; }
-
-@media (max-width: 860px) {
-  .ct__body { grid-template-columns: 1fr; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .ct *, .ct *::before, .ct *::after { transition: none !important; }
-}
-`;

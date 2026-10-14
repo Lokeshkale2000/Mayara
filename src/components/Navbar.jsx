@@ -10,6 +10,8 @@ const LINKS = [
   { page: 'contact', label: 'Contact' },
 ]
 
+import './Navbar.css'
+
 export default function Navbar({ currentPage, onNavigate, search = '', onSearch }) {
   const [open, setOpen] = useState(false)
   const inputRef = useRef(null)
@@ -39,7 +41,6 @@ export default function Navbar({ currentPage, onNavigate, search = '', onSearch 
 
   return (
     <header className="nb" ref={ref}>
-      <style>{nbSearchCss}</style>
       <div className="nb-inner">
 
         {/* Logo */}
@@ -97,60 +98,3 @@ export default function Navbar({ currentPage, onNavigate, search = '', onSearch 
   )
 }
 
-const nbSearchCss = `
-.nb-search {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-.nb-search-icon {
-  position: absolute;
-  left: 12px;
-  width: 16px;
-  height: 16px;
-  color: #9ca3af;
-  pointer-events: none;
-  flex: none;
-}
-.nb-search-input {
-  width: 220px;
-  height: 38px;
-  padding: 0 36px 0 36px;
-  border: 1.5px solid #e5e7eb;
-  border-radius: 999px;
-  background: #f9fafb;
-  font: inherit;
-  font-size: 1.4rem;
-  color: #111827;
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s, width 0.3s ease;
-}
-.nb-search-input::placeholder { color: #9ca3af; }
-.nb-search-input:focus {
-  border-color: #0b84f3;
-  box-shadow: 0 0 0 3px rgba(11,132,243,0.15);
-  background: #fff;
-  width: 280px;
-}
-.nb-search-clear {
-  position: absolute;
-  right: 10px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.2rem;
-  color: #9ca3af;
-  line-height: 1;
-  padding: 2px 4px;
-  border-radius: 50%;
-  transition: color 0.15s;
-}
-.nb-search-clear:hover { color: #374151; }
-@media (max-width: 768px) {
-  .nb-search-input { width: 160px; }
-  .nb-search-input:focus { width: 200px; }
-}
-@media (max-width: 480px) {
-  .nb-search { display: none; }
-}
-`

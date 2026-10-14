@@ -1,7 +1,8 @@
+import './Terms.css'
+
 export default function Terms() {
   return (
     <section className="lp" aria-labelledby="lp-title">
-      <style>{css}</style>
       <div className="lp__wrap">
         <h1 id="lp-title" className="lp__title">Terms of Use</h1>
         <p className="lp__updated">Last updated: January 2025</p>
@@ -52,21 +53,4 @@ export default function Terms() {
   )
 }
 
-const css = `
-.lp {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: clamp(24px, 4vw, 56px) 24px clamp(48px, 7vw, 96px);
-  color: #14172b;
-  font-family: "Outfit", system-ui, sans-serif;
-  box-sizing: border-box;
-}
-.lp *, .lp *::before, .lp *::after { box-sizing: inherit; }
-.lp__wrap { max-width: 780px; margin: 0 auto; }
-.lp__title { font-size: clamp(30px, 4vw, 48px); font-weight: 700; letter-spacing: -0.02em; margin: 0 0 8px; }
-.lp__updated { color: #5d6478; font-size: 15px; margin: 0 0 48px; }
-.lp h2 { font-size: 20px; font-weight: 600; margin: 36px 0 10px; color: #0b84f3; }
-.lp p { font-size: 16px; line-height: 1.75; color: #4a4f5c; margin: 0; }
-.lp a { color: #0b84f3; text-decoration: none; }
-.lp a:hover { text-decoration: underline; }
-`
+
