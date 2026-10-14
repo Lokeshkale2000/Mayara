@@ -13,6 +13,7 @@
   color: var(--ab-ink);
   font-family: "Outfit", "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
   box-sizing: border-box;
+  
 }
 .ab *, .ab *::before, .ab *::after { box-sizing: inherit; }
 .ab h1, .ab h2, .ab h3, .ab p, .ab ul { margin: 0; padding: 0; }

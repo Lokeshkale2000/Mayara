@@ -1,7 +1,14 @@
-/* ── Reset ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-/* ── Variables ── */
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
   --primary: #4f46e5;
   --primary-dark: #3730a3;
@@ -11,17 +18,24 @@
   --text-light: #4b5563;
   --border: #d1d5db;
   --radius: 0.5rem;
-  --shadow: 0 0.25rem 1rem rgba(0,0,0,0.08);
+  --shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.08);
   font-family: 'Outfit', system-ui, 'Segoe UI', sans-serif;
   font-size: 62.5%;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #111827; --bg-alt: #1f2937; --text: #f3f4f6;
-    --text-light: #9ca3af; --border: #374151;
-    --shadow: 0 0.25rem 1rem rgba(0,0,0,0.4);
+    --bg: #111827;
+    --bg-alt: #1f2937;
+    --text: #f3f4f6;
+    --text-light: #9ca3af;
+    --border: #374151;
+    --shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.4);
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -32,7 +46,19 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── Container ── */
+a,
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
 .container {
   width: 100%;
   max-width: 1280px;
@@ -40,7 +66,6 @@ body {
   padding: 0 1.5em;
 }
 
-/* ── Navbar ── */
 .nb {
   position: sticky;
   top: 0;
@@ -61,69 +86,86 @@ body {
   position: relative;
 }
 
+.nb-brand,
+.nb-link,
+.nb-icon-btn,
+.nb-toggle,
+.nb-login {
+  font-family: inherit;
+}
+
 .nb-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.6em;
-  font-family: inherit;
 }
 
 .nb-logo {
-  height: 4.8rem;
+  display: block;
   width: auto;
   max-width: 12rem;
-  display: block;
-  border-radius: 0.4rem;
+  height: 4.8rem;
   object-fit: contain;
+  border-radius: 0.4rem;
 }
 
 .nb-name {
-  font-weight: 700;
   font-size: 1.8rem;
+  font-weight: 700;
   letter-spacing: 0.02em;
   color: var(--text);
 }
 
-.nb-link {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-  text-align: left;
+.nb-menu {
+  display: flex;
 }
 
-.nb-menu { display: flex; }
-
 .nb-list {
-  list-style: none;
   display: flex;
   align-items: center;
   gap: 2em;
+  list-style: none;
 }
 
 .nb-link {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text);
   font-size: 1.5rem;
   font-weight: 500;
-  color: var(--text);
   text-decoration: none;
-  position: relative;
-  transition: color 0.2s;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
+
 .nb-link::after {
   content: '';
   position: absolute;
-  left: 0; bottom: -3px;
-  width: 0; height: 2px;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
   background: linear-gradient(90deg, #0b84f3, #6366f1);
   border-radius: 2px;
   transition: width 0.25s ease;
 }
-.nb-link:hover::after, .nb-link.active::after { width: 100%; }
-.nb-link:hover, .nb-link.active { color: var(--primary); }
+
+.nb-link:hover,
+.nb-link.active {
+  color: var(--primary);
+}
+
+.nb-link:hover::after,
+.nb-link.active::after {
+  width: 100%;
+}
 
 .nb-actions {
   display: flex;
@@ -131,7 +173,8 @@ body {
   gap: 1em;
 }
 
-.nb-icon-btn {
+.nb-icon-btn,
+.nb-toggle {
   position: relative;
   display: inline-grid;
   place-items: center;
@@ -142,17 +185,26 @@ body {
   cursor: pointer;
   border-radius: var(--radius);
 }
-.nb-icon-btn:hover { color: var(--primary); }
-.nb-icon-btn svg { width: 2rem; height: 2rem; }
+
+.nb-icon-btn:hover,
+.nb-toggle:hover {
+  color: var(--primary);
+}
+
+.nb-icon-btn svg,
+.nb-toggle svg {
+  width: 2rem;
+  height: 2rem;
+}
 
 .nb-badge {
   position: absolute;
   top: -0.1em;
   right: -0.3em;
-  min-width: 1.6rem;
-  height: 1.6rem;
   display: grid;
   place-items: center;
+  min-width: 1.6rem;
+  height: 1.6rem;
   border-radius: 999px;
   background: var(--primary);
   color: #fff;
@@ -169,45 +221,43 @@ body {
   font-size: 1.5rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background 0.15s ease;
 }
-.nb-login:hover { background: var(--primary-dark); }
+
+.nb-login:hover {
+  background: var(--primary-dark);
+}
 
 .nb-toggle {
   display: none;
-  border: none;
-  background: none;
-  cursor: pointer;
-  color: var(--text);
-  padding: 0.4em;
 }
-.nb-toggle svg { width: 2.2rem; height: 2.2rem; }
 
-/* ── Hero ── */
 .hero {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   padding: 6em 0;
   text-align: center;
 }
+
 .hero-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1em;
 }
+
 .hero-content h1 {
   font-size: clamp(2.4rem, 5vw, 4.8rem);
   font-weight: 700;
-  color: #fff;
   line-height: 1.2;
-}
-.hero-content p {
-  font-size: clamp(1.4rem, 2vw, 1.8rem);
-  color: rgba(255,255,255,0.9);
-  max-width: 36em;
+  color: #fff;
 }
 
-/* ── Button ── */
+.hero-content p {
+  max-width: 36em;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  color: rgba(255, 255, 255, 0.9);
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
